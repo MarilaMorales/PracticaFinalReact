@@ -1,13 +1,14 @@
 import React from 'react'
-import '../Styles/Registro.css'
-import Tareas from '../Componentes/Tareas'
+import FormLogin from '../Componentes/FormLogin'
 
-function Registro() {
+
+
+function Login() {
   return (
     <div>
-      <Tareas />
+      <FormLogin />
     </div>
   )
 }
 
-export default Registro
+export default Login

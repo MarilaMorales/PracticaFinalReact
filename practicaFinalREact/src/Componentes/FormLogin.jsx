@@ -1,6 +1,6 @@
 import React from 'react';
 import { MDBBtn, MDBContainer, MDBRow, MDBCol, MDBInput } from 'mdb-react-ui-kit';
-import "../Styles/Login.css" 
+import "../Styles/Login.css"
 
 
 function FormLogin() {

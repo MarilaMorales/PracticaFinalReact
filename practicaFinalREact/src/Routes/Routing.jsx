@@ -1,17 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from "../Pages/Login.jsx"
-import Registro from "../Pages/Registro.jsx"
-import Tareas from '../Componentes/Tareas.jsx';
 
 
 const Routing = () => {
   return (
     <Router>
      <Routes>
-       {/* <Route path="/Login" element={<Login />} />
-       <Route path="/Registro" element={<Registro />} /> */}
-        <Route path="/Tareas" element={<Tareas />} />
+       <Route path="/Login" element={<Login />} />
      </Routes>
     </Router>
    );
