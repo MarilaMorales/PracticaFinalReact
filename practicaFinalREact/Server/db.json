@@ -1,76 +1,62 @@
 {
-    "users": [
-      {
-        "id": "86e8",
-        "nombre": "hielo li",
-        "correo": "hielo@gmail.com"
-      },
-      {
-        "id": "620c",
-        "nombre": "Nixon blanco",
-        "correo": "nixon@gmail.com"
-      },
-      {
-        "id": "fe40",
-        "nombre": "Nixon Davila",
-        "correo": "nixonDa@gmail.com",
-        "password": "2810"
-      },
-      {
-        "id": "4a8e",
-        "nombre": "Nana",
-        "correo": "nana@gmail.com",
-        "password": "1212"
-      },
-      {
-        "id": "bc9b",
-        "nombre": "sheyris",
-        "correo": "sheyris@gmail.com",
-        "password": "1314"
-      },
-      {
-        "id": "d988",
-        "nombre": "sheyris",
-        "correo": "sheyris@gmail.com",
-        "password": "1314"
+  "users": [
+    {
+      "id": "86e8",
+      "nombre": "hielo li",
+      "correo": "hielo@gmail.com"
+    },
+    {
+      "id": "620c",
+      "nombre": "Nixon blanco",
+      "correo": "nixon@gmail.com"
+    },
+    {
+      "id": "fe40",
+      "nombre": "Nixon Davila",
+      "correo": "nixonDa@gmail.com",
+      "password": "2810"
+    },
+    {
+      "id": "4a8e",
+      "nombre": "Nana",
+      "correo": "nana@gmail.com",
+      "password": "1212"
+    },
+    {
+      "id": "bc9b",
+      "nombre": "sheyris",
+      "correo": "sheyris@gmail.com",
+      "password": "1314"
+    },
+    {
+      "id": "d988",
+      "nombre": "sheyris",
+      "correo": "sheyris@gmail.com",
+      "password": "1314"
+    },
+    {
+      "id": "22d8",
+      "nombre": {
+        "username": "toto morales",
+        "email": "toto@gmail.com",
+        "password": "1234"
       }
-    ],
-    "admins": [
-      {
-        "id": "e20f",
-        "nombre": "Naruto",
-        "correo": "naruto@gmail.com"
+    },
+    {
+      "id": "4400",
+      "nombre": {
+        "nombre": "xinia",
+        "correo": "xinia@gmail.com",
+        "password": "1234"
       }
-    ],
-    "permisos": [
-      {
-        "id": "b4ca",
-        "usuario": "Ana Rojas",
-        "sede": "Sede El Huerto",
-        "fechaSalida": "2024-08-27",
-        "fechaRegreso": "2024-08-28",
-        "codigoComputadora": "EW34",
-        "condicionesAceptadas": true,
-        "estado": "aceptado"
-      },
-      {
-        "id": "5964",
-        "usuario": "Rebeca",
-        "sede": "Sede Edunamica Nosara",
-        "fechaSalida": "2024-08-31",
-        "fechaRegreso": "2024-09-03",
-        "codigoComputadora": "VM73",
-        "condicionesAceptadas": true,
-        "estado": "aceptado"
-      },
-      {
-        "id": "5a78",
-        "usuario": "Carolina Holmes",
-        "sede": "Sede El Huerto",
-        "fechaSalida": "2024-08-31",
-        "fechaRegreso": "2024-09-05",
-        "codigoComputadora": "RE34",
-        "condicionesAceptadas": true
-      }
-    ]
-  }
+    }
+  ],
+  "admins": [
+    {
+      "id": "e20f",
+      "nombre": "Naruto",
+      "correo": "naruto@gmail.com"
+    }
+  ],
+  "tareas": []
+}

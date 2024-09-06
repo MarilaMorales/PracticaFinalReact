@@ -19,4 +19,27 @@ async function getUsers() {
     }
 }
 
+
+async function getTareas() {
+    try {
+        let response = await fetch('http://localhost:3001/tareas', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al obtener solicitudes');
+        }
+
+        let tareas = await response.json();
+        return tareas;
+    } catch (error) {
+        console.error('Error al obtener solicitudes:', error);
+        throw error;
+    }
+}
+
+
 export {getUsers}

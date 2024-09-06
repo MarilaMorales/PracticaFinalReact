@@ -1,13 +1,13 @@
-// import React from 'react'
-// import '../Styles/Registro.css'
-// import Tareas from '../Componentes/Tareas'
+import React from 'react'
+import '../Styles/Registro.css'
+import Task from '../Componentes/FormTareas'
 
-// function Registro() {
-//   return (
-//     <div>
-//       <Tareas />
-//     </div>
-//   )
-// }
+function Tareas() {
+  return (
+    <div>
+      <Task />
+    </div>
+  )
+}
 
-// export default Registro
+export default Tareas

@@ -38,7 +38,7 @@ function FormLogin() {
       if (user) {
         if (user.password === password) {
           setMessage('¡Éxito! Usuario entrando.');
-          navigate("/home");
+          navigate("/tareas");
         } else {
           setMessage('Contraseña incorrecta.');
         }
