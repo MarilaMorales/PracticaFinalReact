@@ -9,7 +9,7 @@ const Tareas = () => {
         cargarTareas();
     }, []);
 
-    const handleAgregarTarea = () => {
+    const AgregarTarea = () => {
         if (tareaInput !== '' && prioridades.length > 0) {
             const tareasGuardadas = JSON.parse(localStorage.getItem('tareas')) || [];
             const tareaExistente = tareasGuardadas.some(t => t.tarea === tareaInput);
@@ -84,7 +84,7 @@ const Tareas = () => {
                         <option value="Medium">Medium</option>
                         <option value="High">High</option>
                     </select>
-                    <button id="btnAgregarTarea" onClick={handleAgregarTarea}>Agregar Tarea</button>
+                    <button id="btnAgregarTarea" onClick={AgregarTarea}>Agregar Tarea</button>
                 </div>
                 <div id="contenedorTareas">
                     {tareas.map((tarea, index) => (
