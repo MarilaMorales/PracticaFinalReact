@@ -1,5 +1,5 @@
 import React from 'react'
-import '../Styles/Registro.css'
+import '../Styles/Tareas.css'
 import Task from '../Componentes/FormTareas'
 import NavBar from '../Componentes/Navbar'
 import Footer from '../Componentes/Footer'

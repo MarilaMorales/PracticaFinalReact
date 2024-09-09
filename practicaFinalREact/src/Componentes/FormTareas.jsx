@@ -29,7 +29,7 @@ const Task = () => {
                 return;
             }
 
-            const nuevaTarea = { tarea: tareaInput, prioridad }; // Usa prioridad aquí
+            const nuevaTarea = { tarea: tareaInput, prioridad }; 
             try {
                 await postTareas(nuevaTarea);
                 setTareas(tareas.concat(nuevaTarea)); 
