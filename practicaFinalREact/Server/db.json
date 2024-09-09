@@ -49,6 +49,22 @@
         "correo": "xinia@gmail.com",
         "password": "1234"
       }
+    },
+    {
+      "id": "6628",
+      "nombre": {
+        "nombre": "adriana",
+        "correo": "adriana@gmail.com",
+        "password": "1234"
+      }
+    },
+    {
+      "id": "7969",
+      "nombre": {
+        "nombre": "adriana",
+        "correo": "adriana@gmail.com",
+        "password": "1234"
+      }
     }
   ],
   "admins": [
@@ -58,5 +74,21 @@
       "correo": "naruto@gmail.com"
     }
   ],
-  "tareas": []
+  "tareas": [
+    {
+      "id": "4a4a",
+      "tarea": "Compra",
+      "prioridad": "Low"
+    },
+    {
+      "id": "15b4",
+      "tarea": "Bañarse",
+      "prioridad": "High"
+    },
+    {
+      "id": "8b5c",
+      "tarea": "Inventario",
+      "prioridad": "Low"
+    }
+  ]
 }

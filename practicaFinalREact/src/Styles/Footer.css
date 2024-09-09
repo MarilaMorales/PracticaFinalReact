@@ -1,0 +1,41 @@
+body{}
+
+.footer1 {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 20px 0;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+  }
+  
+  .footer h5 {
+    color: #ffffff;
+  }
+  
+  .footer a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer .list-unstyled {
+    padding-left: 0;
+    list-style: none;
+  }
+  
+  .footer .text-center {
+    text-align: center;
+  }
+  
+  .footer .text-md-left {
+    text-align: left;
+  }
+  
+  .footer .text-md-right {
+    text-align: right;
+  }
+  

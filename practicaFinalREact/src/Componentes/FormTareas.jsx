@@ -1,68 +1,82 @@
 import React, { useState, useEffect } from 'react';
-
+import { getTareas } from '../Services/get';
+import { deleteTarea } from '../Services/delete';
+import { postTareas } from '../Services/post';
+import { updateTarea } from '../Services/put';
+import '../Styles/Tareas.css';
 
 const Task = () => {
     const [tareaInput, setTareaInput] = useState('');
-    const [prioridades, setPrioridades] = useState([]);
+    const [prioridad, setPrioridad] = useState(''); // Cambiado a un solo valor
     const [tareas, setTareas] = useState([]);
-
-
-
-
 
     useEffect(() => {
         cargarTareas();
     }, []);
 
-    const AgregarTarea = () => {
-        if (tareaInput !== '' && prioridades.length > 0) {
-            const tareasGuardadas = JSON.parse(localStorage.getItem('tareas')) || [];
-            const tareaExistente = tareasGuardadas.some(t => t.tarea === tareaInput);
+    const AgregarTarea = async () => {
+        if (tareaInput !== '' && prioridad) { // Cambiado de prioridades.length > 0 a prioridad
+            let tareaExistente = false;
+            for (let i = 0; i < tareas.length; i++) {
+                if (tareas[i].tarea === tareaInput) {
+                    tareaExistente = true;
+                    break;
+                }
+            }
+
             if (tareaExistente) {
                 alert("La tarea ya está registrada");
                 return;
             }
 
-            const nuevaTarea = { tarea: tareaInput, prioridades };
-            const tareasActualizadas = [...tareas, nuevaTarea];
-            setTareas(tareasActualizadas);
-            guardarTarea(nuevaTarea);
-
-            // Limpiar campos
-            setTareaInput('');
-            setPrioridades([]);
+            const nuevaTarea = { tarea: tareaInput, prioridad }; // Usa prioridad aquí
+            try {
+                await postTareas(nuevaTarea);
+                setTareas(tareas.concat(nuevaTarea)); 
+                setTareaInput('');
+                setPrioridad(''); // Limpia el valor de prioridad
+            } catch (error) {
+                console.error('Error al agregar tarea:', error);
+            }
         } else {
             alert("Por favor, completa todos los campos de la tarea.");
         }
     };
 
-    const guardarTarea = (tarea) => {
-        const tareasGuardadas = JSON.parse(localStorage.getItem('tareas')) || [];
-        tareasGuardadas.push(tarea);
-        localStorage.setItem('tareas', JSON.stringify(tareasGuardadas));
+    const cargarTareas = async () => {
+        try {
+            const data = await getTareas();
+            setTareas(data);
+        } catch (error) {
+            console.error('Error al cargar tareas:', error);
+        }
     };
 
-    const cargarTareas = () => {
-        const tareasGuardadas = JSON.parse(localStorage.getItem('tareas')) || [];
-        setTareas(tareasGuardadas);
+    const eliminarTarea = async (tareaAEliminar) => {
+        try {
+            await deleteTarea(tareaAEliminar.id);
+            const tareasActualizadas = tareas.filter(tarea => tarea.id !== tareaAEliminar.id);
+            setTareas(tareasActualizadas);
+        } catch (error) {
+            console.error('Error al eliminar tarea:', error);
+        }
     };
 
-    const eliminarTarea = (tareaAEliminar) => {
-        const tareasGuardadas = JSON.parse(localStorage.getItem('tareas')) || [];
-        const tareasActualizadas = tareasGuardadas.filter(t => !(t.tarea === tareaAEliminar.tarea && JSON.stringify(t.prioridades) === JSON.stringify(tareaAEliminar.prioridades)));
-        setTareas(tareasActualizadas);
-        localStorage.setItem('tareas', JSON.stringify(tareasActualizadas));
-    };
-
-    const editarTarea = (tareaAEditar) => {
+    const editarTarea = async (tareaAEditar) => {
         const nuevaTarea = prompt("Edita la tarea:", tareaAEditar.tarea);
-        const nuevasPrioridadesTemp = prompt("Edita las prioridades de la tarea (separadas por coma):", tareaAEditar.prioridades.join(','));
-        if (nuevaTarea && nuevasPrioridadesTemp) {
-            const nuevasPrioridades = nuevasPrioridadesTemp.split(',').map(p => p.trim());
-            eliminarTarea(tareaAEditar);
-            const tareaEditada = { tarea: nuevaTarea, prioridades: nuevasPrioridades };
-            guardarTarea(tareaEditada);
-            setTareas([...tareas, tareaEditada]);
+        const nuevaPrioridad = prompt("Edita la prioridad de la tarea:", tareaAEditar.prioridad);
+        if (nuevaTarea && nuevaPrioridad) {
+            const tareaEditada = { id: tareaAEditar.id, tarea: nuevaTarea, prioridad: nuevaPrioridad };
+
+            try {
+                await updateTarea(tareaAEditar.id, tareaEditada);
+                const tareasActualizadas = tareas.map(tarea =>
+                    tarea.id === tareaAEditar.id ? tareaEditada : tarea
+                );
+                setTareas(tareasActualizadas);
+            } catch (error) {
+                console.error('Error al editar tarea:', error);
+            }
         }
     };
 
@@ -81,10 +95,10 @@ const Task = () => {
                     />
                     <select
                         id="prioridadTarea"
-                        multiple
-                        value={prioridades}
-                        onChange={(e) => setPrioridades([...e.target.selectedOptions].map(option => option.value))}
+                        value={prioridad}
+                        onChange={(e) => setPrioridad(e.target.value)}
                     >
+                        <option value="">Selecciona una prioridad</option>
                         <option value="Low">Low</option>
                         <option value="Medium">Medium</option>
                         <option value="High">High</option>
@@ -92,9 +106,9 @@ const Task = () => {
                     <button id="btnAgregarTarea" onClick={AgregarTarea}>Agregar Tarea</button>
                 </div>
                 <div id="contenedorTareas">
-                    {tareas.map((tarea, index) => (
-                        <div key={index} className="tarea">
-                            {`Tarea: ${tarea.tarea} - Prioridades: ${tarea.prioridades.join(', ')}`}
+                    {tareas.map((tarea) => (
+                        <div key={tarea.id} className="tarea">
+                            {`Tarea: ${tarea.tarea} - Prioridad: ${tarea.prioridad}`} {/* Cambiado a prioridad única */}
                             <button onClick={() => eliminarTarea(tarea)}>Eliminar</button>
                             <button onClick={() => editarTarea(tarea)}>Editar</button>
                         </div>

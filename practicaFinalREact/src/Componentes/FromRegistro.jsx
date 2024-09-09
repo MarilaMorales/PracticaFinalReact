@@ -55,14 +55,14 @@ function FormRegistro() {
   
     try {
       // Formatear los datos antes de enviarlos
-      const formattedUser = {
+      const userObjeto = {
         nombre: username,
         correo: email,
         password: password
       };
   
       // Registrar nuevo usuario con el formato correcto
-      await postUser(formattedUser);
+      await postUser(userObjeto);
       setMessage("¡Registro exitoso!");
       navigate("/login"); // Usar el navigate para redirigir
   

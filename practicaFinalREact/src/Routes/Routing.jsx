@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from "../Pages/Login.jsx"
 import Registro from '../Pages/Registro.jsx';
 import Tareas from '../Pages/Tareas.jsx';
+import AboutUS from '../Pages/AboutUs.jsx';
 
 
 const Routing = () => {
@@ -12,6 +13,7 @@ const Routing = () => {
        <Route path="/Login" element={<Login />} />
        <Route path="/Registro" element={<Registro />} />
        <Route path="/Tareas" element={<Tareas />} />
+       <Route path="/AboutUs" element={<AboutUS />} />
      </Routes>
     </Router>
    );
