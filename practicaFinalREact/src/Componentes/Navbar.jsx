@@ -10,7 +10,7 @@ function NavBar() {
   const navigate = useNavigate();
   
   function cerrarSesion() {
-    localStorage.removeItem('Autenticado');
+    localStorage.removeItem('Autentificado');
     navigate('/');
   };
 

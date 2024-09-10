@@ -8,8 +8,9 @@ function AboutUS() {
   return (
     <div>
       <NavBar />
-      <Footer />
       <AboutUsComp/>
+      <Footer />
+
 
     </div>
   )

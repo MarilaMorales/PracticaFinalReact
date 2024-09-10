@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import '../Styles/Registro.css';
 
 function FormRegistro() {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState(''); 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -17,7 +17,7 @@ function FormRegistro() {
 
 
 
-
+//el useEffect esta vacio para que solo lo haga 1 vez y no se encicle.
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -28,7 +28,7 @@ function FormRegistro() {
       }
     };
     fetchUsers();
-  }, []);
+  }, []);  
 
 
 

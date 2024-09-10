@@ -11,6 +11,9 @@ function FormLogin() {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
 
+
+
+  //se obtiene la lista de usuarios desde el db.json por el getUser y se almacena en el estado users.
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -33,10 +36,10 @@ function FormLogin() {
     }
 
     try {
-      const user = users.find(u => u.correo === email);
+      const user = users.find(u => u.correo === email); //Se busca en users el usuario cuyo correo coincida con el ingresado 
 
       if (user) {
-        if (user.password === password) {
+        if (user.password === password) { // Compara la contraseña ingresada con la almacenada en el usuario
           localStorage.setItem('Autentificado', 'true');
           setMessage('¡Éxito! Usuario entrando.');
           navigate("/tareas");

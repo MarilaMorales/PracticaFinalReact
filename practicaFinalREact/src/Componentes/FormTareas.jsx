@@ -36,16 +36,16 @@ const Task = () => {
 
     const AgregarTarea = async () => {
         if (tareaInput !== '' && prioridad) {
-            let tareaExistente = tareas.some(tarea => tarea.tarea === tareaInput);
+            let tareaExistente = tareas.some(tarea => tarea.tarea === tareaInput); //Ve si hay tarea con el mismo nombre
 
             if (tareaExistente) {
                 toast.error("La tarea ya está registrada");
                 return;
             }
 
-            const nuevaTarea = { tarea: tareaInput, prioridad };
+            const nuevaTarea = { tarea: tareaInput, prioridad }; //Si la tarea es nueva, hay nuevo objeto
             try {
-                await postTareas(nuevaTarea);
+                await postTareas(nuevaTarea); //
                 setTareas([...tareas, nuevaTarea]);
                 setTareaInput('');
                 setPrioridad('');
@@ -59,19 +59,25 @@ const Task = () => {
         }
     };
 
-    const cargarTareas = async () => {
+
+
+
+    const cargarTareas = async () => { //Carga las Tareas desde el db.json
         try {
             const data = await getTareas();
-            setTareas(data);
+            setTareas(data); //Actualiza las tareas con la nueva data
         } catch (error) {
             console.error('Error al cargar tareas:', error);
         }
     };
 
-    const eliminarTarea = async (tareaAEliminar) => {
+
+
+
+    const eliminarTarea = async (tareaDelete) => { 
         try {
-            await deleteTarea(tareaAEliminar.id);
-            setTareas(tareas.filter(tarea => tarea.id !== tareaAEliminar.id));
+            await deleteTarea(tareaDelete.id); //Se llama a deleteTarea con el ID de la tarea a elimina
+            setTareas(tareas.filter(tarea => tarea.id !== tareaDelete.id));// Devuelve solo las tareas sin ID eliminado
             toast.success("Tarea eliminada exitosamente");
         } catch (error) {
             toast.error("Error al eliminar tarea");
@@ -81,6 +87,8 @@ const Task = () => {
 
 
 
+    //Se llama al modal de edición y se guarda la tarea
+
     const EditarTarea = (tarea) => {
         setTareaEditar(tarea);
         setShowModal(true);
@@ -88,11 +96,11 @@ const Task = () => {
 
 
 
-    const GuardarEditar = async (tareaEditada) => {
+    const GuardarEditar = async (tareaEditada) => { //actualizar una tarea editada
         try {
-            await updateTarea(tareaEditada.id, tareaEditada);
+            await updateTarea(tareaEditada.id, tareaEditada); //Se llama desde el put para actualizar
             setTareas(tareas.map(tarea => 
-                tarea.id === tareaEditada.id ? tareaEditada : tarea
+                tarea.id === tareaEditada.id ? tareaEditada : tarea //Se actualiza La tarea, con la tarea modificada
             ));
             toast.success("Tarea editada exitosamente");
         } catch (error) {

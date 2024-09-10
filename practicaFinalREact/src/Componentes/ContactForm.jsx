@@ -3,29 +3,29 @@ import "../Styles/Contact.css";
 
 function ContactForm() {
   return (
-<div className="contact-form-container">
-      <h2>Contacta con nosotros</h2>
-      <form className="contact-form">
-        <label htmlFor="name">Nombre:</label>
+<div className="contact-form-containerContact">
+      <h2 id='tituloContact'>Contacta con nosotros</h2>
+      <form className="contact-formContact">
+        <label id='labelContact' htmlFor="name">Nombre:</label>
         <input
           type="text"
-          id="name"
+          id="nameContact"
           name="name"
 
           required
         />
 
-        <label htmlFor="email">Correo electrónico:</label>
+        <label id='labelContact' htmlFor="email1">Correo electrónico:</label>
         <input
           type="email"
-          id="email"
+          id="emailContact"
           name="email"
           required
         />
 
-        <label htmlFor="message">Mensaje:</label>
+        <label id='labelContact' htmlFor="message">Mensaje:</label>
         <textarea
-          id="message"
+          id="messageContact"
           name="message"
           required
         ></textarea>
