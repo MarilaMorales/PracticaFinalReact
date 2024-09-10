@@ -8,8 +8,7 @@ function Footer() {
       <Container fluid>
         <Row>
           <Col md={4} className="text-center text-md-left">
-            <h5>About Us</h5>
-            <p>No se que poner</p>
+          {/* <img src="../IMG/" alt="" /> */}
           </Col>
           <Col md={4} className="text-center">
             <h5>Quick Links</h5>

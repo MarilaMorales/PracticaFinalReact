@@ -32,9 +32,11 @@ function FormRegistro() {
 
 
 
-  const handleSubmit = async (e) => {
+  const guardarUser = async (e) => {
     e.preventDefault();
-    setMessage(''); // Limpiar mensaje previo
+
+
+    setMessage(''); 
   
     if (!username || !email || !password || !confirmPassword) {
       setMessage("No dejes campos en blanco");
@@ -55,13 +57,16 @@ function FormRegistro() {
     }
   
     try {
-      // Formatear los datos antes de enviarlos
+
       const userObjeto = {
         nombre: username,
         correo: email,
         password: password
       };
   
+
+
+      
       // Registrar nuevo usuario con el formato correcto
       await postUser(userObjeto);
       setMessage("¡Registro exitoso!");
@@ -91,7 +96,7 @@ function FormRegistro() {
             <MDBCardBody className='p-5 shadow-5 text-center'>
               <h2 className="fw-bold mb-5">Sign up now</h2>
 
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={guardarUser}>
                 <MDBRow>
                   <MDBCol md='6'>
                     <MDBInput

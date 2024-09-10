@@ -2,7 +2,7 @@
 
 export const updateTarea = async (id, tarea) => {
     try {
-        const response = await fetch(`${'http://localhost:3001/tareas'}/${id}`, {
+        const response = await fetch(`http://localhost:3001/tareas/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

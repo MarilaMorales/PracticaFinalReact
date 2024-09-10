@@ -79,18 +79,13 @@
       "prioridad": "High"
     },
     {
-      "id": "ec2e",
-      "tarea": "Protestar por los impuestos",
-      "prioridad": "Low"
-    },
-    {
       "id": "19b9",
       "tarea": "Esto no sirve",
       "prioridad": "Medium"
     },
     {
       "id": "d5fe",
-      "tarea": "Digamos que ya sirve",
+      "tarea": "Digamos que ya sirve bien",
       "prioridad": "Medium"
     },
     {
@@ -107,6 +102,11 @@
       "id": "904e",
       "tarea": "Correr",
       "prioridad": "Medium"
+    },
+    {
+      "id": "5788",
+      "tarea": "Comprar Helados",
+      "prioridad": "High"
     }
   ]
 }

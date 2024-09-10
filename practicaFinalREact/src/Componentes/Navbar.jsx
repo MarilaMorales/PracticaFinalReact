@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import 
+import "../Styles/Navbar2.css"
 
 function NavBar() {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ function NavBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/AboutUs">About Us</Nav.Link> 
-            <Nav.Link as={Link} to="/Contact">Contact</Nav.Link> 
+            <Nav.Link as={Link} to="/ContactUS">Contact</Nav.Link> 
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item as={Link} to="/action/3.1">Opcion 1</NavDropdown.Item> 
               <NavDropdown.Item as={Link} to="/action/3.2">Opcion 2</NavDropdown.Item> 
