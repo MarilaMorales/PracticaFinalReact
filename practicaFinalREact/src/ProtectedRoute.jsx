@@ -1,9 +1,9 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-const ProtectedRoute = ({ children }) => {
+const Protect = ({ children }) => {
     
-    const estaAutenticado = localStorage.getItem('Autenticado') === 'true'; 
+    const estaAutenticado = localStorage.getItem("Autentificado") === "true"; 
 
     if (!estaAutenticado ) {
        
@@ -13,4 +13,4 @@ const ProtectedRoute = ({ children }) => {
     return children;
 };
 
-export default ProtectedRoute;
+export default Protect;

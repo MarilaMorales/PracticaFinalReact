@@ -9,6 +9,13 @@ import '../Styles/Tareas.css';
 import EditarModal from './EditarModal';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+
+
+
+
+
 
 const Task = () => {
     const [tareaInput, setTareaInput] = useState('');

@@ -37,7 +37,7 @@ function FormLogin() {
 
       if (user) {
         if (user.password === password) {
-          localStorage.setItem('Autenticado', 'true');
+          localStorage.setItem('Autentificado', 'true');
           setMessage('¡Éxito! Usuario entrando.');
           navigate("/tareas");
         } else {
