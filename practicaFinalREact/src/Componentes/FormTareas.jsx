@@ -3,43 +3,56 @@ import { getTareas } from '../Services/get';
 import { deleteTarea } from '../Services/delete';
 import { postTareas } from '../Services/post';
 import { updateTarea } from '../Services/put';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../Styles/Tareas.css';
+import EditarModal from './EditarModal';
+import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const Task = () => {
     const [tareaInput, setTareaInput] = useState('');
-    const [prioridad, setPrioridad] = useState(''); // Cambiado a un solo valor
+    const [prioridad, setPrioridad] = useState('');
     const [tareas, setTareas] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [tareaAEditar, setTareaAEditar] = useState(null);
+    const navigate = useNavigate();
+
+
+    function cerrarSesion() {
+        localStorage.removeItem('Autenticado');
+        navigate('/');
+      };
+
+    
 
     useEffect(() => {
         cargarTareas();
     }, []);
 
+
     const AgregarTarea = async () => {
-        if (tareaInput !== '' && prioridad) { // Cambiado de prioridades.length > 0 a prioridad
-            let tareaExistente = false;
-            for (let i = 0; i < tareas.length; i++) {
-                if (tareas[i].tarea === tareaInput) {
-                    tareaExistente = true;
-                    break;
-                }
-            }
+        if (tareaInput !== '' && prioridad) {
+            let tareaExistente = tareas.some(tarea => tarea.tarea === tareaInput);
 
             if (tareaExistente) {
-                alert("La tarea ya está registrada");
+                toast.error("La tarea ya está registrada");
                 return;
             }
 
-            const nuevaTarea = { tarea: tareaInput, prioridad }; 
+            const nuevaTarea = { tarea: tareaInput, prioridad };
             try {
                 await postTareas(nuevaTarea);
-                setTareas(tareas.concat(nuevaTarea)); 
+                setTareas([...tareas, nuevaTarea]);
                 setTareaInput('');
-                setPrioridad(''); // Limpia el valor de prioridad
+                setPrioridad('');
+                toast.success("Tarea agregada exitosamente");
             } catch (error) {
+                toast.error("Error al agregar tarea");
                 console.error('Error al agregar tarea:', error);
             }
         } else {
-            alert("Por favor, completa todos los campos de la tarea.");
+            toast.error("Por favor, completa todos los campos de la tarea.");
         }
     };
 
@@ -55,33 +68,48 @@ const Task = () => {
     const eliminarTarea = async (tareaAEliminar) => {
         try {
             await deleteTarea(tareaAEliminar.id);
-            const tareasActualizadas = tareas.filter(tarea => tarea.id !== tareaAEliminar.id);
-            setTareas(tareasActualizadas);
+            setTareas(tareas.filter(tarea => tarea.id !== tareaAEliminar.id));
+            toast.success("Tarea eliminada exitosamente");
         } catch (error) {
-            console.error('Error al eliminar tarea:', error);
+            toast.error("Error al eliminar tarea");
+            console.error("Error al eliminar tarea:", error);
         }
     };
 
-    const editarTarea = async (tareaAEditar) => {
-        const nuevaTarea = prompt("Edita la tarea:", tareaAEditar.tarea);
-        const nuevaPrioridad = prompt("Edita la prioridad de la tarea:", tareaAEditar.prioridad);
-        if (nuevaTarea && nuevaPrioridad) {
-            const tareaEditada = { id: tareaAEditar.id, tarea: nuevaTarea, prioridad: nuevaPrioridad };
 
-            try {
-                await updateTarea(tareaAEditar.id, tareaEditada);
-                const tareasActualizadas = tareas.map(tarea =>
-                    tarea.id === tareaAEditar.id ? tareaEditada : tarea
-                );
-                setTareas(tareasActualizadas);
-            } catch (error) {
-                console.error('Error al editar tarea:', error);
-            }
+
+    const EditarTarea = (tarea) => {
+        setTareaAEditar(tarea);
+        setShowModal(true);
+    };
+
+
+
+    const GuardarEditar = async (tareaEditada) => {
+        try {
+            await updateTarea(tareaEditada.id, tareaEditada);
+            setTareas(tareas.map(tarea => 
+                tarea.id === tareaEditada.id ? tareaEditada : tarea
+            ));
+            toast.success("Tarea editada exitosamente");
+        } catch (error) {
+            toast.error("Error al editar tarea");
+            console.error('Error al editar tarea:', error);
         }
     };
 
+
+
+
+
+
+    
     return (
+        
         <div className="tareasConteiner">
+            <div className='botonCerrar'>
+            <button onClick={cerrarSesion}>Cerrar Sesión</button> 
+            </div>
             <h2 id="h2Titulo">Tareas</h2>
             <div className="tareasConteiner2">
                 <div className="containerTareas">
@@ -103,18 +131,28 @@ const Task = () => {
                         <option value="Medium">Medium</option>
                         <option value="High">High</option>
                     </select>
-                    <button id="btnAgregarTarea" onClick={AgregarTarea}>Agregar Tarea</button>
+                    <Button id="btnAgregarTarea" onClick={AgregarTarea}>Agregar Tarea</Button>
                 </div>
                 <div id="contenedorTareas">
                     {tareas.map((tarea) => (
                         <div key={tarea.id} className="tarea">
-                            {`Tarea: ${tarea.tarea} - Prioridad: ${tarea.prioridad}`} {/* Cambiado a prioridad única */}
-                            <button onClick={() => eliminarTarea(tarea)}>Eliminar</button>
-                            <button onClick={() => editarTarea(tarea)}>Editar</button>
+                            {`Tarea: ${tarea.tarea} - Prioridad: ${tarea.prioridad}`}
+                            <div className="btnContainer">
+                                <Button onClick={() => eliminarTarea(tarea)}>Eliminar</Button>
+                                <Button onClick={() => EditarTarea(tarea)}>Editar</Button>
+                            </div>
                         </div>
                     ))}
                 </div>
             </div>
+            {tareaAEditar && (
+                <EditarModal
+                    show={showModal}
+                    CerrarModal={() => setShowModal(false)}
+                    tareaAEditar={tareaAEditar}
+                    onSave={GuardarEditar}
+                />
+            )}
         </div>
     );
 };

@@ -1,3 +1,5 @@
+
+
 export const updateTarea = async (id, tarea) => {
     try {
         const response = await fetch(`${'http://localhost:3001/tareas'}/${id}`, {

@@ -24,7 +24,7 @@ function FormLogin() {
     fetchUsers();
   }, []);
 
-  const handleLogin = async () => {
+  const Login = async () => {
     setMessage('');
 
     if (!email || !password) {
@@ -37,6 +37,7 @@ function FormLogin() {
 
       if (user) {
         if (user.password === password) {
+          localStorage.setItem('Autenticado', 'true');
           setMessage('¡Éxito! Usuario entrando.');
           navigate("/tareas");
         } else {
@@ -63,6 +64,7 @@ function FormLogin() {
       <MDBRow>
         <MDBCol col='6' className="mb-5">
           <div className="d-flex flex-column ms-5">
+          {message && <div id="mensajeAlert">{message}</div>}
             <div className="text-center">
               <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" alt="logo" style={{width: "185px"}} />
               <h4 className="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
@@ -88,8 +90,8 @@ function FormLogin() {
             />
 
             <div className="text-center pt-1 mb-5 pb-1">
-              <MDBBtn className="mb-4 w-100 gradient-custom-2" onClick={handleLogin}>Sign in</MDBBtn>
-              <a className="text-muted" href="#!">Forgot password?</a>
+              <MDBBtn className="mb-4 w-100 gradient-custom-2" onClick={Login}>Sign in</MDBBtn>
+             
             </div>
 
             <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
@@ -99,7 +101,7 @@ function FormLogin() {
               </MDBBtn>
             </div>
             
-            {message && <div id="mensajeAlert">{message}</div>}
+            
           </div>
         </MDBCol>
 

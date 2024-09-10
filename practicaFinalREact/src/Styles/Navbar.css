@@ -1,7 +1,15 @@
-.navbar{
-    background-color: rgb(10, 238, 238) !important;
-}
-
-.bg-body-tertiary{
-    background-color: aqua !important;
-}
+/* NavBar.css */
+.custom-navbar {
+    background-color: #16a0a5; /* Cambia a tu color deseado */
+  }
+  
+  .custom-navbar .navbar-brand,
+  .custom-navbar .nav-link,
+  .custom-navbar .dropdown-item {
+    color: #fff; 
+  }
+  
+  .custom-navbar .dropdown-item:hover {
+    background-color: #c70039; 
+  }
+  

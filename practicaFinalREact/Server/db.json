@@ -67,28 +67,46 @@
       }
     }
   ],
-  "admins": [
-    {
-      "id": "e20f",
-      "nombre": "Naruto",
-      "correo": "naruto@gmail.com"
-    }
-  ],
   "tareas": [
     {
-      "id": "4a4a",
-      "tarea": "Compra",
+      "id": "1d72",
+      "tarea": "Barrer",
       "prioridad": "Low"
     },
     {
-      "id": "15b4",
-      "tarea": "Bañarse",
+      "id": "2360",
+      "tarea": "Estresarse por el Projecto",
       "prioridad": "High"
     },
     {
-      "id": "8b5c",
-      "tarea": "Inventario",
+      "id": "ec2e",
+      "tarea": "Protestar por los impuestos",
       "prioridad": "Low"
+    },
+    {
+      "id": "3f73",
+      "tarea": "Fumigar",
+      "prioridad": "Medium"
+    },
+    {
+      "id": "19b9",
+      "tarea": "Esto no sirve",
+      "prioridad": "Medium"
+    },
+    {
+      "id": "d5fe",
+      "tarea": "Digamos que ya sirve",
+      "prioridad": "Low"
+    },
+    {
+      "id": "00ac",
+      "tarea": "sigue sin servir bien",
+      "prioridad": "Low"
+    },
+    {
+      "id": "8a5f",
+      "tarea": "no edita",
+      "prioridad": "Medium"
     }
   ]
 }

@@ -3,6 +3,7 @@ import { MDBBtn, MDBContainer, MDBCard, MDBCardBody, MDBInput, MDBIcon, MDBRow, 
 import { postUser } from '../Services/post';
 import { getUsers } from "../Services/get";
 import { useNavigate } from "react-router-dom";
+// import Mandala from "../IMG/Mandala.png"
 import '../Styles/Registro.css';
 
 function FormRegistro() {
@@ -176,7 +177,7 @@ function FormRegistro() {
         </MDBCol>
 
         <MDBCol md='6'>
-          <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" className="w-100 rounded-4 shadow-4 img-fluid" alt="Sample"/>
+          {/* <img src="Mandala" className="w-100 rounded-4 shadow-4 img-fluid" alt="Sample"/> */}
         </MDBCol>
       </MDBRow>
     </MDBContainer>
