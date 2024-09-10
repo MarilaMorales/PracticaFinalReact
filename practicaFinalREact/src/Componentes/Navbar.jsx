@@ -2,9 +2,20 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import 
 
 function NavBar() {
+  const navigate = useNavigate();
+  
+  function cerrarSesion() {
+    localStorage.removeItem('Autenticado');
+    navigate('/');
+  };
+
+
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
@@ -22,6 +33,9 @@ function NavBar() {
               <NavDropdown.Item as={Link} to="/action/3.4">Separated link</NavDropdown.Item> 
             </NavDropdown>
           </Nav>
+          <div className='botonCerrar'>
+            <button id='btnCerrar' onClick={cerrarSesion}>Cerrar Sesión</button> 
+            </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>

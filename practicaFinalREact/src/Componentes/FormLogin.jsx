@@ -17,7 +17,7 @@ function FormLogin() {
         const data = await getUsers();
         setUsers(data);
       } catch (error) {
-        console.error('Error al obtener los usuarios:', error);
+        console.error("Error al obtener los usuarios:", error);
       }
     };
 
@@ -47,7 +47,7 @@ function FormLogin() {
         setMessage('Este usuario no existe.');
       }
     } catch (error) {
-      console.error('Error en el proceso de login:', error);
+      console.error("Error en el proceso de login:", error);
       setMessage('Error en ingreso de datos');
     }
 
@@ -67,7 +67,7 @@ function FormLogin() {
           {message && <div id="mensajeAlert">{message}</div>}
             <div className="text-center">
               <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" alt="logo" style={{width: "185px"}} />
-              <h4 className="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
+              <h4 className="mt-1 mb-5 pb-1">LOGIN</h4>
             </div>
 
             <p>Please login to your account</p>

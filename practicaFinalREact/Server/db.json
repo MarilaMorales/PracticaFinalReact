@@ -84,11 +84,6 @@
       "prioridad": "Low"
     },
     {
-      "id": "3f73",
-      "tarea": "Fumigar",
-      "prioridad": "Medium"
-    },
-    {
       "id": "19b9",
       "tarea": "Esto no sirve",
       "prioridad": "Medium"
@@ -96,7 +91,7 @@
     {
       "id": "d5fe",
       "tarea": "Digamos que ya sirve",
-      "prioridad": "Low"
+      "prioridad": "Medium"
     },
     {
       "id": "00ac",
@@ -106,6 +101,11 @@
     {
       "id": "8a5f",
       "tarea": "no edita",
+      "prioridad": "Medium"
+    },
+    {
+      "id": "904e",
+      "tarea": "Correr",
       "prioridad": "Medium"
     }
   ]

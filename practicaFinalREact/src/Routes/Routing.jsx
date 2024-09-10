@@ -5,6 +5,7 @@ import Registro from '../Pages/Registro.jsx';
 import Tareas from '../Pages/Tareas.jsx';
 import AboutUS from '../Pages/AboutUs.jsx';
 import Protect from "../ProtectedRoute.jsx";
+import ContactUS from '../Pages/ContacUs.jsx';
 
 
 const Routing = () => {
@@ -14,7 +15,8 @@ const Routing = () => {
        <Route path="/" element={<Login />} />
        <Route path="/Registro" element={<Registro />} />
        <Route path="/Login" element={<Login />} />
-       <Route path="/AboutUs" element={<AboutUS />} />
+       <Route path="/ContactUs" element={<Protect>< ContactUS /></Protect>}/>
+       <Route path="/AboutUs" element={<Protect><AboutUS /></Protect>}/>
        <Route path="/tareas" element={<Protect><Tareas /></Protect>}/>
      </Routes>
    );

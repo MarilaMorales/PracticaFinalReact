@@ -22,14 +22,10 @@ const Task = () => {
     const [prioridad, setPrioridad] = useState('');
     const [tareas, setTareas] = useState([]);
     const [showModal, setShowModal] = useState(false);
-    const [tareaAEditar, setTareaAEditar] = useState(null);
+    const [tareaAEditar, setTareaEditar] = useState(null);
     const navigate = useNavigate();
 
 
-    function cerrarSesion() {
-        localStorage.removeItem('Autenticado');
-        navigate('/');
-      };
 
     
 
@@ -86,7 +82,7 @@ const Task = () => {
 
 
     const EditarTarea = (tarea) => {
-        setTareaAEditar(tarea);
+        setTareaEditar(tarea);
         setShowModal(true);
     };
 
@@ -114,9 +110,6 @@ const Task = () => {
     return (
         
         <div className="tareasConteiner">
-            <div className='botonCerrar'>
-            <button onClick={cerrarSesion}>Cerrar Sesión</button> 
-            </div>
             <h2 id="h2Titulo">Tareas</h2>
             <div className="tareasConteiner2">
                 <div className="containerTareas">

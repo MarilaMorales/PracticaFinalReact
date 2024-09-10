@@ -65,7 +65,7 @@ function FormRegistro() {
       // Registrar nuevo usuario con el formato correcto
       await postUser(userObjeto);
       setMessage("¡Registro exitoso!");
-      navigate("/login"); // Usar el navigate para redirigir
+      navigate("/login"); 
   
       setUsername('');
       setEmail('');
